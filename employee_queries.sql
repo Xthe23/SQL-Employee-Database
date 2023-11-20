@@ -1,46 +1,46 @@
 -- List the employee number, last name, first name, sex, and salary of each employee
-SELECT e.emp_no, e.last_name, e.first_name, e.sex, s.salary
-FROM employees e
-JOIN salaries s ON e.emp_no = s.emp_no;
+SELECT e."Emp_no", e."Last_name", e."First_name", e."Sex", s."Salary"
+FROM "Employees" e
+JOIN "Salaries" s ON e."Emp_no" = s."Emp_no";
 
 -- List the first name, last name, and hire date for the employees who were hired in 1986
-SELECT first_name, last_name, hire_date
-FROM employees
-WHERE EXTRACT(YEAR FROM hire_date) = 1986;
+SELECT "First_name", "Last_name", "Hire_date"
+FROM "Employees"
+WHERE EXTRACT(YEAR FROM "Hire_date") = 1986;
 
 -- List the manager of each department along with their department number, department name, employee number, last name, and first name
-SELECT d.dept_no, d.dept_name, e.emp_no, e.last_name, e.first_name
-FROM dept_manager m
-JOIN departments d ON m.dept_no = d.dept_no
-JOIN employees e ON m.emp_no = e.emp_no;
+SELECT d."Dept_no", d."Dept_name", e."Emp_no", e."Last_name", e."First_name"
+FROM "Dept_manager" m
+JOIN "Departments" d ON m."Dept_no" = d."Dept_no"
+JOIN "Employees" e ON m."Emp_no" = e."Emp_no";
 
 -- List the department number for each employee along with that employee’s employee number, last name, first name, and department name
-SELECT de.dept_no, e.emp_no, e.last_name, e.first_name, d.dept_name
-FROM dept_emp de
-JOIN employees e ON de.emp_no = e.emp_no
-JOIN departments d ON de.dept_no = d.dept_no;
+SELECT de."Dept_no", e."Emp_no", e."Last_name", e."First_name", d."Dept_name"
+FROM "Dept_emp" de
+JOIN "Employees" e ON de."Emp_no" = e."Emp_no"
+JOIN "Departments" d ON de."Dept_no" = d."Dept_no";
 
 -- List first name, last name, and sex of each employee whose first name is 'Hercules' and whose last name begins with the letter 'B'
-SELECT first_name, last_name, sex
-FROM employees
-WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
+SELECT "First_name", "Last_name", "Sex"
+FROM "Employees"
+WHERE "First_name" = 'Hercules' AND "Last_name" LIKE 'B%';
 
 -- List each employee in the Sales department, including their employee number, last name, and first name
-SELECT e.emp_no, e.last_name, e.first_name
-FROM dept_emp de
-JOIN employees e ON de.emp_no = e.emp_no
-JOIN departments d ON de.dept_no = d.dept_no
-WHERE d.dept_name = 'Sales';
+SELECT e."Emp_no", e."Last_name", e."First_name"
+FROM "Dept_emp" de
+JOIN "Employees" e ON de."Emp_no" = e."Emp_no"
+JOIN "Departments" d ON de."Dept_no" = d."Dept_no"
+WHERE d."Dept_name" = 'Sales';
 
 -- List each employee in the Sales and Development departments, including their employee number, last name, first name, and department name
-SELECT e.emp_no, e.last_name, e.first_name, d.dept_name
-FROM dept_emp de
-JOIN employees e ON de.emp_no = e.emp_no
-JOIN departments d ON de.dept_no = d.dept_no
-WHERE d.dept_name IN ('Sales', 'Development');
+SELECT e."Emp_no", e."Last_name", e."First_name", d."Dept_name"
+FROM "Dept_emp" de
+JOIN "Employees" e ON de."Emp_no" = e."Emp_no"
+JOIN "Departments" d ON de."Dept_no" = d."Dept_no"
+WHERE d."Dept_name" IN ('Sales', 'Development');
 
 -- List the frequency counts, in descending order, of all the employee last names
-SELECT last_name, COUNT(*) as frequency
-FROM employees
-GROUP BY last_name
+SELECT "Last_name", COUNT(*) AS frequency
+FROM "Employees"
+GROUP BY "Last_name"
 ORDER BY frequency DESC;
