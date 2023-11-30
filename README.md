@@ -8,6 +8,7 @@ This repository contains the SQL code and images showcasing the successful creat
 
 Below is the Entity Relationship Diagram (ERD) that illustrates the database schema used in this project:
 
+For the complete QuickDBD code, please [click here](https://github.com/Xthe23/sql-challenge/blob/main/quickDBD_ERD_queries.txt)
 ![Entity Relationship Diagram](https://github.com/Xthe23/sql-challenge/blob/main/Resources/EntityRelationalDiagram.png)
 
 The ERD was created using QuickDBD and represents the structure of the database, including tables, columns, and relationships.
